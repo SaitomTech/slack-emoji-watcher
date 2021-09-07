@@ -1,19 +1,29 @@
 import os
-from slack_sdk.rtm_v2 import RTMClient
 
-API_TOKEN = os.environ["API_TOKEN"]
-CHANNEL = os.environ["CHANNEL"]
+from slack_bolt import App
+from slack_bolt.adapter.socket_mode import SocketModeHandler
 
-rtm = RTMClient(token=API_TOKEN)
+SLACK_BOT_TOKEN = os.environ["SLACK_BOT_TOKEN"]
+SLACK_APP_TOKEN = os.environ["SLACK_APP_TOKEN"]
 
-@rtm.on("emoji_changed")
-def handle(client, event):
-   if event["subtype"] == "add":
-        name = event["name"]
-        message = {
-            "channel": CHANNEL,
-            "text": f":{name}: ({name})",
-        }
-        client.web_client.chat_postMessage(**message)
+# CHANNEL = os.environ["CHANNEL"]
 
-rtm.start()
+
+app = App(token=SLACK_BOT_TOKEN)
+
+if __name__ == "__main__":
+    SocketModeHandler(app=app, app_token=SLACK_APP_TOKEN)
+
+
+# rtm = RTMClient(token=APP_TOKEN)
+# @rtm.on("emoji_changed")
+# def handle(client, event):
+#    if event["subtype"] == "add":
+#         name = event["name"]
+#         message = {
+#             "channel": CHANNEL,
+#             "text": f":{name}: ({name})",
+#         }
+#         client.web_client.chat_postMessage(**message)
+
+# rtm.start()
