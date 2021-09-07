@@ -2,6 +2,14 @@
 
 ## 使用方法
 
+- botの作成（参考をもとに作る）
+  - socket modeをon（token nameを適当に入れる）
+  - scope
+    - calls:write
+    - emoji:read
+    - reactions:write
+  - event subscriptions -> subscribe to bot events
+    - emoji_changed
 - 環境変数の設定
   - `.env` ファイルをディレクトリ直下に作成
 
