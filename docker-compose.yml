@@ -1,0 +1,15 @@
+version: "3"
+services:
+  slack-emoji-notification:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        WORKDIR: /project
+    volumes:
+      - .:/project
+      - ${USERPROFILE-~}/.ssh:/home/vscode/.ssh
+    image: slack-emoji-notification-image 
+    container_name: slack-emoji-notification-container
+    tty: true
+    env_file: .env # shellスクリプト内でも環境変数として使用するため
