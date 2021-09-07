@@ -5,25 +5,24 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
 SLACK_APP_TOKEN = os.environ['SLACK_APP_TOKEN']
-
-# CHANNEL = os.environ['CHANNEL']
+CHANNEL_ID = os.environ['CHANNEL_ID']
 
 
 app = App(token=SLACK_BOT_TOKEN)
 
+
+@app.event('emoji_changed')
+def notify_emoji_added(event, say):
+    """絵文字が追加されたときのみ通知する."""
+    if event['subtype'] == 'add':
+        emoji_name = event['name']
+        message = {
+            'channel': CHANNEL_ID,
+            'text': f':{emoji_name}: ({emoji_name})',
+        }
+        say(**message)
+
+
 if __name__ == '__main__':
-    SocketModeHandler(app=app, app_token=SLACK_APP_TOKEN)
-
-
-# rtm = RTMClient(token=APP_TOKEN)
-# @rtm.on('emoji_changed')
-# def handle(client, event):
-#    if event['subtype'] == 'add':
-#         name = event['name']
-#         message = {
-#             'channel': CHANNEL,
-#             'text': f':{name}: ({name})',
-#         }
-#         client.web_client.chat_postMessage(**message)
-
-# rtm.start()
+    handler = SocketModeHandler(app=app, app_token=SLACK_APP_TOKEN)
+    handler.start()
