@@ -10,6 +10,8 @@
     - reactions:write
   - event subscriptions -> subscribe to bot events
     - emoji_changed
+  - basic informationのdisplay information
+  - your app's presence in slackを設定
 - 環境変数の設定
   - `.env` ファイルをディレクトリ直下に作成
 
