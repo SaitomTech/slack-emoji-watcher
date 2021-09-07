@@ -13,14 +13,12 @@ app = App(token=SLACK_BOT_TOKEN)
 
 @app.event('emoji_changed')
 def notify_emoji_added(event, say):
-    """絵文字が追加されたときのみ通知する."""
+    '''絵文字が追加されたときのみ通知する.'''
     if event['subtype'] == 'add':
         emoji_name = event['name']
-        message = {
-            'channel': CHANNEL_ID,
-            'text': f':{emoji_name}: ({emoji_name})',
-        }
-        say(**message)
+
+        say(text=f'{emoji_name}: :{emoji_name}:', channel=CHANNEL_ID)
+        say(text=f':{emoji_name}:', channel=CHANNEL_ID)
 
 
 if __name__ == '__main__':
