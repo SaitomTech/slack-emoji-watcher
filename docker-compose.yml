@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/project
       - ${USERPROFILE-~}/.ssh:/home/vscode/.ssh
-    image: slack-emoji-notification-image 
-    container_name: slack-emoji-notification-container
+    image: slack-emoji-watcher-image 
+    container_name: slack-emoji-watcher-container
     tty: true
     env_file: .env # shellスクリプト内でも環境変数として使用するため
