@@ -16,6 +16,4 @@
 
 ## 参考
 
-- slack_boltについて
-
-  - https://slack.dev/bolt-python/tutorial/getting-started
+- [slack_bolt](https://slack.dev/bolt-python/tutorial/getting-started)
