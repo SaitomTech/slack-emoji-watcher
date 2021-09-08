@@ -38,4 +38,4 @@ jobs:
           context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          file: ./.devcontainer//Dockerfile
+          file: ./.devcontainer/Dockerfile
