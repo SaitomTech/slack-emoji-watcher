@@ -17,7 +17,7 @@ def notify_emoji_added(event, say, client):
         emoji_name = event['name']
 
         say(
-            text=f'新規スタンプ: `{emoji_name}`',
+            text=f'新着スタンプ: `{emoji_name}`',
             channel=CHANNEL_ID
         )
         message_emoji_info = say(
