@@ -65,4 +65,4 @@ COPY ./requirements-dev.txt /tmp/requirements-dev.txt
 RUN pip install -r /tmp/requirements.txt  -r /tmp/requirements-dev.txt
 
 ENV DEBIAN_FRONTEND=
-CMD ["/bin/bash"]
+CMD ["python", "bot.py"]
