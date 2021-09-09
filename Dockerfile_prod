@@ -28,5 +28,7 @@ RUN rm -rf /var/lib/apt/lists/* \
 COPY ./requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
+COPY ./bot.py . 
+
 ENV DEBIAN_FRONTEND=
 CMD ["python", "bot.py"]
