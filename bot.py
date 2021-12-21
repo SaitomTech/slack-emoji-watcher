@@ -24,6 +24,10 @@ def notify_emoji_added(event, say, client):
             text=f':{emoji_name}:',
             channel=CHANNEL_ID
         )
+        say(
+            text=f'stamp :{emoji_name}:',
+            channel=CHANNEL_ID
+        )
 
         client.reactions_add(
             token=SLACK_BOT_TOKEN,
